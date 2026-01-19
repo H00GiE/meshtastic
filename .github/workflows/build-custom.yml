@@ -1,0 +1,15 @@
+name: Build Seeed Xiao S3
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+  workflow_dispatch:  # Allows manual builds from Actions tab
+
+jobs:
+  build-my-board:
+    uses: ./.github/workflows/build.yml
+    with:
+      platform: esp32s3
+      pio_env: seeed-xiao-s3-wio-standalone
+      version: ${{ github.sha }}
